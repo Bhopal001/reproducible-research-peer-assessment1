@@ -73,7 +73,7 @@ steps_median <- median(steps_per_day$steps, na.rm=TRUE)
 
 #### The Mean is : 1.0766189 &times; 10<sup>4</sup> and Median is : 10765
 
-###Time series plot of the average number of steps taken
+Time series plot of the average number of steps taken
 
 ```r
 ###calculate the aggregation of steps by intervals of 5-minutes
@@ -94,7 +94,7 @@ ggplot(steps_per_interval, aes(x=interval, y=steps)) +
 
 ![plot of chunk time](figure/time-1.png)
 
-###The 5-minute interval that, on average, contains the maximum number of steps
+##The 5-minute interval that, on average, contains the maximum number of steps
 
 ```r
 max_interval <- steps_per_interval[which.max(steps_per_interval$steps),]
@@ -102,16 +102,16 @@ colnames(max_interval) <- c("interval","steps")
 ```
 #### The 835 interval has maximum  206.1698113 steps 
 
-###Imputing missing values
-#### 1. The total number of missing values in the dataset
+Imputing missing values
+ 1. The total number of missing values in the dataset
 
 ```r
 missing_values <- sum(is.na(activityData$steps))
 ```
-####The total number of missing values are 2304
+The total number of missing values are 2304
 
-#### 2. strategy for filling in all of the missing values in the dataset.
-#### 3. Create new dataset that is equal to the original dataset but with the missing data filled in.
+2. strategy for filling in all of the missing values in the dataset.
+3. Create new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```r
 activity_data_imputed <- activityData
@@ -133,8 +133,8 @@ steps_by_median_imputed <- median(steps_by_day_imputed)
 ```
 #### Mean : 1.0766189 &times; 10<sup>4</sup> and Median : 1.0766189 &times; 10<sup>4</sup>
 
-###Are there differences in activity patterns between weekdays and weekends?
-####1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
+Are there differences in activity patterns between weekdays and weekends?
+1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
 ```r
 activity_data_imputed$wtype <-  ifelse(as.POSIXlt(activity_data_imputed$date)$wday %in% c(0,6), 'weekend', 'weekday')
